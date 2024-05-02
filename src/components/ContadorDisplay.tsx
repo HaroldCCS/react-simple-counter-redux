@@ -1,4 +1,4 @@
-import React from'react'
+import React, { useEffect } from'react'
 import { useAppSelector, useAppDispatch } from '../store/reducers/store';
 import { incrementarContador, decrementarContador, restableserContador } from '../store/actions/contador';
 
@@ -17,6 +17,10 @@ function ContadorDisplay() {
   const handleReset = () => {
     dispatch(restableserContador(null));
   };
+
+  useEffect(() => {
+    console.log('Cantidad:', cantidad);
+  }, [cantidad]);
 
   return (
     <div>
