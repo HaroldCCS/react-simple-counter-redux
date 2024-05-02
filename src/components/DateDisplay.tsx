@@ -4,13 +4,12 @@ import React, { useEffect, useState } from 'react'
 const DateDisplay: React.FC = () => {
     const [date, setDate] = useState('')
 
-    /**
-     * On component render sets the date state to current date and time
-     */
+    const setFormatDate = () => setDate(moment().toDate().toString())
+
     useEffect(() => {
-        const interval = setInterval(() => {
-            setDate(moment().toDate().toString())
-        }, 1000)
+        if (date === '') setFormatDate();
+
+        const interval = setInterval(() => setFormatDate(), 1000)
         return () => clearInterval(interval)
     }, [])
 
